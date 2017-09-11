@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Test page</title>
+<link rel="stylesheet">
+<style>
+.wrap {
+	width: 1150px; /*фиксируем ширину обертки*/
+	margin: 0 auto; /*центрируем ее*/
+	background: none;
+	height: 70px; /*Задаем высоту обертки*/
+	border: 3px solid #800080;
+	padding: 10px;
+}
+
+.bblock_1 {
+	float: left; /*Задаем обтекание*/
+	line-height: 70px; /*Высота строки +  верт. центрирования текста*/
+	font-size: 40px;
+	background: #800080; /* Цвет фона */
+	color: white;
+	width: 280px; /*Фиксируем ширину блока*/
+	margin-right: 10px;
+	text-align: center; /*Центрируем текст по горизонтали*/
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.9); /* Параметры тени */
+}
+
+.bblock_2 {
+	float: left; /*Задаем обтекание*/
+	line-height: 70px; /*Высота строки +  верт. центрирования текста*/
+	font-size: 40px;
+	background: #1E90FF;
+	color: white;
+	width: 280px; /*Фиксируем ширину блока*/
+	margin-right: 10px;
+	text-align: center; /*Центрируем текст по горизонтали*/
+}
+
+.bblock_3 {
+	float: left; /*Задаем обтекание*/
+	line-height: 70px; /*Высота строки +  верт. центрирования текста*/
+	font-size: 40px;
+	background: #800080; /* Цвет фона */
+	color: white;
+	width: 280px; /*Фиксируем ширину блока*/
+	margin-right: 10px;
+	text-align: center; /*Центрируем текст по горизонтали*/
+}
+
+.wrap :last-child {
+	margin-right: 0px; /*Убираем поле последнего div-а*/
+}
+
+q::before {
+	content: "\2605";
+	display: inline-block;
+	color: #FFFF00;
+	vertical-align: bottom;
+	font: 45px/95% Arial Unicode Ms:;
+	vertical-align: bottom;
+}
+
+q::before {
+	margin-right: 10px;
+}
+</style>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+
+
+	<div class="wrap">
+		<!--Создаем дополнительную обертку-родительский элемент -->
+		<div class="bblock_1"></div>
+		<div class="bblock_2"></div>
+		<div class="bblock_3"></div>
+		<div class="bblock_2"></div>
+	</div>
+
+	<script>
+		var results = [ {
+			"title" : "Marketing",
+			"hightlight" : "true"
+		}, {
+			"title" : "Sales",
+			"hightlight" : "false"
+		}, {
+			"title" : "Marketing",
+			"hightlight" : "true"
+		}, {
+			"title" : "Sales",
+			"hightlight" : "false"
+		} ];
+
+		var htmlStr2 = '';
+		var htmlStr = '';
+		$.each(results, function(k, v) {
+			if (v.hightlight === "true") {
+				htmlStr = v.title;
+			}
+
+		});
+		$.each(results, function(k, v) {
+			if (v.hightlight === "false") {
+				htmlStr2 = v.title;
+			}
+
+		});
+
+		$("div.bblock_1").append('<q>' + htmlStr + '</q>');
+		$("div.bblock_2").append(htmlStr2);
+		$("div.bblock_3").append('<q>' + htmlStr + '</q>');
+	</script>
+
+</body>
+</html>
